@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Medical Register</title>
+</h:head>
+<h:body>
+	<h1>Welcome to Medical Register</h1>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Name:" />
+            <h:inputText value="#{medicalRegisterBean.medicalRecord.name}" />
+
+            <h:outputLabel value="Age:" />
+            <h:inputText value="#{medicalRegisterBean.medicalRecord.age}" />
+
+            <h:outputLabel value="Medical History:" />
+            <h:inputTextarea value="#{medicalRegisterBean.medicalRecord.medicalHistory}" />
+
+            <h:commandButton value="Save" action="#{medicalRegisterBean.save}" />
+        </h:panelGrid>
+
+        <h:dataTable value="#{medicalRegisterBean.records}" var="reg" border="1">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{reg.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Age</f:facet>
+                #{reg.age}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Medical History</f:facet>
+                #{reg.medicalHistory}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Action</f:facet>
+				<h:commandLink value="Edit" action="#{medicalRegisterBean.edit(reg.id)}" /><br/>
+                <h:commandLink value="Delete" action="#{medicalRegisterBean.delete(reg.id)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

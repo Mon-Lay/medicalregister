@@ -1,0 +1,6 @@
+CREATE TABLE medical (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    medicalHistory VARCHAR(255) NOT NULL
+);
